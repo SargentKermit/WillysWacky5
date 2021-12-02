@@ -13,5 +13,8 @@ namespace WillysWacky5.Models
         public string DistributorLogoURL { get; set; }
         public string DistributorName { get; set; }
         public string DistributorAddress { get; set; }
+
+        //Relationships
+        public List<Distributor_Product> Distributor_Products { get; set; }
     }
 }

@@ -13,5 +13,8 @@ namespace WillysWacky5.Models
         public string ShipMapLocationURL { get; set; }
         public string ShipState { get; set; }
         public string ShipAddress { get; set; }
+
+        //Relationships
+        public List<Product> Product { get; set; }
     }
 }

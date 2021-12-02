@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 using WillysWacky5.Data;
@@ -17,6 +18,16 @@ namespace WillysWacky5.Models
         public string ProductImageURL { get; set; }
 
         public ProductCategory ProductCategory { get; set; }
+
+        //Relationships
+        public List<Distributor_Product> Distributor_Products { get; set; }
+
+        //Ship
+        public int ShipId { get; set; }
+        [ForeignKey("ShipId")]
+        public Ship Ship { get; set; }
+
+
 
     }
 }
