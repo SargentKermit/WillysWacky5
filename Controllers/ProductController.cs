@@ -19,8 +19,8 @@ namespace WillysWacky5.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var data = await _context.Products.ToListAsync();
-            return View();
+            var allMovies = await _context.Products.Include(n => n.Ship).OrderBy(n => n.ProductName).ToListAsync();
+            return View(allMovies);
         }
     }
 }
