@@ -10,8 +10,12 @@ namespace WillysWacky5.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Display(Name = "Distributor Logo")]
         public string DistributorLogoURL { get; set; }
+        [Display(Name = "Name")]
         public string DistributorName { get; set; }
+        [Display(Name = "Address")]
         public string DistributorAddress { get; set; }
 
         //Relationships

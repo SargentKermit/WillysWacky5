@@ -51,11 +51,38 @@ namespace WillysWacky5.Data
                 //Product
                 if (!context.Products.Any())
                 {
+                    context.Products.AddRange(new List<Product>()
+                    {
+                        new Product()
+                        {
+                            ProductName = "Sea Weed Cheese",
+                            ProductDescription = "Cheese that tastes like seafood and is green in color.",
+                            ProductPrice = 3.99,
+                            ProductImageURL = "http://reinemannc-ltc.com/2021-ltc-classes/images/seacheese.jpg",
+                            ProductCategory = ProductCategory.Food,
+                            ShipId = 1
+
+
+                        }
+
+                    });
+                    context.SaveChanges();
 
                 }
                 //Distributor & Products
-                if (!context.Distributors_Products.Any())
+                if (!context.Distributor_Products.Any())
                 {
+                    context.Distributor_Products.AddRange(new List<Distributor_Product>()
+                    {
+                        new Distributor_Product()
+                        {
+                            ProductId = 3,
+                            DistributorId = 1
+
+
+                        }
+                    });
+                    context.SaveChanges();
 
                 }
             }
