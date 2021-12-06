@@ -8,9 +8,9 @@ namespace WillysWacky5.Data.Services
 {
     public interface IDistributorService
     {
-        Task<IEnumerable<Distributor>> GetAll();
-        Distributor GetById(int id);
-        void Add(Distributor distributor);
+        Task<IEnumerable<Distributor>> GetAllAsync();
+        Task<Distributor> GetByIdAsync(int id);
+        Task AddAsync(Distributor distributor);
         Distributor Update(int id, Distributor newDistributor);
         void Delete(int id);
     }

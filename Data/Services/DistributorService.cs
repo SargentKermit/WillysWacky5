@@ -14,10 +14,10 @@ namespace WillysWacky5.Data.Services
         {
             _context = context;
         }
-        public void Add(Distributor distributor)
+        public async Task AddAsync(Distributor distributor)
         {
-            _context.Distributors.Add(distributor);
-            _context.SaveChanges();
+            await _context.Distributors.AddAsync(distributor);
+            await _context.SaveChangesAsync();
         }
 
         public void Delete(int id)
@@ -25,15 +25,16 @@ namespace WillysWacky5.Data.Services
             throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Distributor>> GetAll()
+        public async Task<IEnumerable<Distributor>> GetAllAsync()
         {
             var result = await _context.Distributors.ToListAsync();
             return result;
         }
 
-        public Distributor GetById(int id)
+        public async Task<Distributor> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Distributors.FirstOrDefaultAsync(n => n.Id == id);
+            return result;
         }
 
         public Distributor Update(int id, Distributor newDistributor)

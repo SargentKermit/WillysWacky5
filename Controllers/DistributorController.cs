@@ -20,7 +20,7 @@ namespace WillysWacky5.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var data = await _service.GetAll();
+            var data = await _service.GetAllAsync();
             return View(data);
         }
         //Get: Distributors/Create
@@ -36,8 +36,17 @@ namespace WillysWacky5.Controllers
             {
                 return View(distributor);
             }
-            _service.Add(distributor);
+            await _service.AddAsync(distributor);
             return RedirectToAction(nameof(Index));
+        }
+
+        //GET: Distributors/Details/1
+        public async Task<IActionResult> Details(int id)
+        {
+            var distributorDetails = await _service.GetByIdAsync(id);
+
+            if (distributorDetails == null) return View("Empty");
+            return View(distributorDetails);
         }
         
     }
