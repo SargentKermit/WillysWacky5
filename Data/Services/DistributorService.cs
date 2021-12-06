@@ -16,7 +16,8 @@ namespace WillysWacky5.Data.Services
         }
         public void Add(Distributor distributor)
         {
-            throw new NotImplementedException();
+            _context.Distributors.Add(distributor);
+            _context.SaveChanges();
         }
 
         public void Delete(int id)

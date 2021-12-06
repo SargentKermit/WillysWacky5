@@ -12,10 +12,13 @@ namespace WillysWacky5.Models
         public int Id { get; set; }
 
         [Display(Name = "Distributor Logo")]
+        [Required(ErrorMessage = "Distributor Logo Required")]
         public string DistributorLogoURL { get; set; }
         [Display(Name = "Name")]
+        [Required(ErrorMessage = "Distributor Name Required")]
         public string DistributorName { get; set; }
         [Display(Name = "Address")]
+        [Required(ErrorMessage = "Distributor Address Required")]
         public string DistributorAddress { get; set; }
 
         //Relationships
