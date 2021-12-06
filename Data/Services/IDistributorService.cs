@@ -11,7 +11,7 @@ namespace WillysWacky5.Data.Services
         Task<IEnumerable<Distributor>> GetAllAsync();
         Task<Distributor> GetByIdAsync(int id);
         Task AddAsync(Distributor distributor);
-        Distributor Update(int id, Distributor newDistributor);
-        void Delete(int id);
+        Task<Distributor> UpdateAsync(int id, Distributor newDistributor);
+        Task DeleteAsync(int id);
     }
 }

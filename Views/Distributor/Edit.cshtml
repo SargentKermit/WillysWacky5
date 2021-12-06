@@ -1,0 +1,59 @@
+﻿@model Distributor
+   
+
+@{      ViewData["Title"] = "Update distributor";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Update a  Distributor</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Edit">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                    <div class="form-group text-center">
+                        <img class="border-info rounded-circle"  style="max-width: 150px" id="DistributorLogoPreview" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DistributorLogoURL" class="control-label"></label>
+                        <input asp-for="DistributorLogoURL" class="form-control" />
+                        <span asp-validation-for="DistributorLogoURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DistributorName" class="control-label"></label>
+                        <input asp-for="DistributorName" class="form-control" />
+                        <span asp-validation-for="DistributorName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="DistributorAddress" class="control-label"></label>
+                        <input asp-for="DistributorAddress" class="form-control" />
+                        <span asp-validation-for="DistributorAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+<script>
+
+    $(document).ready(function () {
+        var output = document.getElementById('DistributorLogoPreview');
+        output.src = $("#DistributorLogoURL").val();
+    })
+
+    $("#DistributorLogoURL").on("change", function () {
+        var output = document.getElementById('DistributorLogoPreview');
+        output.src = $(this).val();
+    })
+</script>
+}

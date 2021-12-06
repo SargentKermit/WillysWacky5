@@ -45,9 +45,46 @@ namespace WillysWacky5.Controllers
         {
             var distributorDetails = await _service.GetByIdAsync(id);
 
-            if (distributorDetails == null) return View("Empty");
+            if (distributorDetails == null) return View("NotFound");
             return View(distributorDetails);
         }
-        
+
+        //Get: Distributors/Edit/1
+        public async Task<IActionResult> Edit(int id)
+        {
+            var distributorDetails = await _service.GetByIdAsync(id);
+            if (distributorDetails == null) return View("NotFound");
+            return View(distributorDetails);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, [Bind("Id,DistributorLogoURL,DistributorName,DistributorAddress")] Distributor distributor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(distributor);
+            }
+            await _service.UpdateAsync(id, distributor);
+            return RedirectToAction(nameof(Index));
+        }
+
+        //Get: Distributors/Delete/1
+        public async Task<IActionResult> Delete (int id)
+        {
+            var distributorDetails = await _service.GetByIdAsync(id);
+            if (distributorDetails == null) return View("NotFound");
+            return View(distributorDetails);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var distributorDetails = await _service.GetByIdAsync(id);
+            if (distributorDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }

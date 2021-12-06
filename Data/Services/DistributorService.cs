@@ -20,9 +20,11 @@ namespace WillysWacky5.Data.Services
             await _context.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = await _context.Distributors.FirstOrDefaultAsync(n => n.Id == id);
+            _context.Distributors.Remove(result);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Distributor>> GetAllAsync()
@@ -37,9 +39,12 @@ namespace WillysWacky5.Data.Services
             return result;
         }
 
-        public Distributor Update(int id, Distributor newDistributor)
+        public async Task<Distributor> UpdateAsync(int id, Distributor newDistributor)
         {
-            throw new NotImplementedException();
+            _context.Update(newDistributor);
+            await _context.SaveChangesAsync();
+            return newDistributor;
+
         }
     }
 }
