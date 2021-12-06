@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WillysWacky5</title>
+    <title>@ViewData["Title"] - Willy's Wacky Products</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
@@ -12,20 +12,34 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WillysWacky5</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Willy's Wacky Products</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        <li class="navbar-nav">
+                            <a class="nav-link text-dark" asp-controller="Product" asp-action="Index"><i class="bi bi-shop"></i>Products</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="bi bi-gear"></i>Management
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Ship" asp-action="Index"><i class="bi bi-mailbox"></i>Warehouse Locations</a>
+                                <a class="dropdown-item" asp-controller="Distributor" asp-action="Index"><i class="bi bi-truck"></i>Distributors</a>
+                            </div>
+
                         </li>
                     </ul>
+                    <form class="form-inline my-2 my-lg-0" asp-controller="Products" asp-action="Filter" style="padding-right: 25px;" >
+                        <input name="searchString" type="text" class="form-control" placeholder="Search for a product..." />
+                        <button class="btn btin-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+
+
+                    </form>
+
                 </div>
             </div>
         </nav>
@@ -38,7 +52,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - WillysWacky5 - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - Willy's Wacky Products
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
