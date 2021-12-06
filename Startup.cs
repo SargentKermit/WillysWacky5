@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WillysWacky5.Data;
+using WillysWacky5.Data.Services;
 
 namespace WillysWacky5
 {
@@ -27,6 +28,9 @@ namespace WillysWacky5
         {
             //DbContext configuration
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnectionString")));
+
+            //Services configuration 
+            services.AddScoped<IDistributorService, DistributorService>();
 
             services.AddControllersWithViews();
         }
