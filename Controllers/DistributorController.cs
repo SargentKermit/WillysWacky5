@@ -4,21 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WillysWacky5.Data;
+using WillysWacky5.Data.Services;
 
 namespace WillysWacky5.Controllers
 {
     public class DistributorController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IDistributorService _service;
 
-        public DistributorController(AppDbContext context)
+        public DistributorController(IDistributorService service)
         {
-            _context = context;
+            _service = service;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var data = _context.Distributors.ToList();
+            var data = await _service.GetAll();
             return View(data);
         }
     }
