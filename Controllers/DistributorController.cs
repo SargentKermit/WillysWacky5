@@ -22,5 +22,12 @@ namespace WillysWacky5.Controllers
             var data = await _service.GetAll();
             return View(data);
         }
+        //Get: Distributors/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        
     }
 }
