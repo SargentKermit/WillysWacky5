@@ -1,0 +1,59 @@
+﻿@model Ship
+   
+
+@{      ViewData["Title"] = "Add a new Warehouse";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Add a New Warehouse</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+                    <div class="form-group text-center">
+                        <img class="border-info rounded-circle"  style="max-width: 150px" id="ShipLogoPreview" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ShipMapLocationURL" class="control-label"></label>
+                        <input asp-for="ShipMapLocationURL" class="form-control" />
+                        <span asp-validation-for="ShipMapLocationURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ShipState" class="control-label"></label>
+                        <input asp-for="ShipState" class="form-control" />
+                        <span asp-validation-for="ShipState" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ShipAddress" class="control-label"></label>
+                        <input asp-for="ShipAddress" class="form-control" />
+                        <span asp-validation-for="ShipAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+<script>
+
+    $(document).ready(function () {
+        var output = document.getElementById('ShipLogoPreview');
+        output.src = $("#ShipMapLocationURL").val();
+    })
+
+    $("#ShipMapLocationURL").on("change", function () {
+        var output = document.getElementById('ShipLogoPreview');
+        output.src = $(this).val();
+    })
+</script>
+}
