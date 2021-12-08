@@ -47,5 +47,21 @@ namespace WillysWacky5.Controllers
             if (shipDetails == null) return View("NotFound");
             return View(shipDetails);
         }
+
+        //Get: Ship/Edit/1
+        public async Task<IActionResult> Edit(int id)
+        {
+            var shipDetails = await _service.GetByIdAsync(id);
+            if (shipDetails == null) return View("NotFound");
+            return View(shipDetails);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id,[Bind("Id,ShipMapLocationURL,ShipState,ShipAddress")] Ship ship)
+        {
+            if (!ModelState.IsValid) return View(ship);
+            await _service.UpdateAsync(id, ship);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
