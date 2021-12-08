@@ -8,6 +8,6 @@ using WillysWacky5.Models;
 namespace WillysWacky5.Data.Services
 {
     public interface IShipService: IEntityBaseRepository<Ship>
-    {
+    { 
     }
 }

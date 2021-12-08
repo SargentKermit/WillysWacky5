@@ -1,0 +1,68 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Product Detail";
+}
+
+<div class="row">
+
+
+    <div class="col-md-8 offset-2">
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-info">
+                        <p class="card-text">
+                            <h5 class="card-title">
+                                @Model.ProductName
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <img src="@Model.ProductImageURL" width="100%" alt="@Model.ProductName" />
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">@Model.ProductDescription</p>
+                        <p class="card-text"><b>Price:</b> $@Model.ProductPrice</p>
+                        <p class="card-text"><b>Category:</b> @Model.ProductCategory</p>
+                        <p class="card-text">
+                            <b>Shipping From:</b>
+                            <a asp-controller="Ship" asp-action="Details" asp-route-id="@Model.ShipId">@Model.Ship.ShipAddress</a>
+                        </p>
+                        <p class="card-text">
+                            <b>Distributors</b>
+                            <hr />
+                            <div class="row">
+                                @foreach(var distributor in Model.Distributor_Products)
+                                 {
+                                    <div class="card-columns text-center">
+                                        <img class="border-info rounded-circle" src="@distributor.Distributor.DistributorLogoURL" style="max-width: 150px" />
+                                        <br />
+                                        <a asp-controller="Distributor" asp-action="Details" asp-route-id="@distributor.DistributorId">@distributor.Distributor.DistributorName</a>
+                                    </div>
+                                 }
+
+                            </div>
+
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card-footer">
+                        <p class="card-text">
+                            <a class="btn btn-outline-primary float-right" asp-action="Index">Back To List</a>
+                            <a class="btn btn-success text-white"><i class="bi bi-cart-plus"></i>Add to Cart ($@Model.ProductPrice)</a>
+                        </p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
