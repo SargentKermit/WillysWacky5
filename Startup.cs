@@ -32,6 +32,7 @@ namespace WillysWacky5
             //Services configuration 
             services.AddScoped<IDistributorService, DistributorService>();
             services.AddScoped<IShipService, ShipService>();
+            services.AddScoped<IProductService, ProductService>();
 
             services.AddControllersWithViews();
         }

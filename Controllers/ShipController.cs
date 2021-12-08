@@ -63,5 +63,21 @@ namespace WillysWacky5.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        //Get: Ship/Delete/1
+        public async Task<IActionResult> Delete(int id)
+        {
+            var shipDetails = await _service.GetByIdAsync(id);
+            if (shipDetails == null) return View("NotFound");
+            return View(shipDetails);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleteConfirm(int id)
+        {
+            var shipDetails = await _service.GetByIdAsync(id);
+            if (shipDetails == null) return View("NotFound");
+
+            await _service.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

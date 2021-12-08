@@ -5,21 +5,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WillysWacky5.Data;
+using WillysWacky5.Data.Services;
 
 namespace WillysWacky5.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly AppDbContext _context;
+        private readonly IProductService _service;
 
-        public ProductController(AppDbContext context)
+        public ProductController(IProductService service)
         {
-            _context = context;
+            _service = service;
         }
 
         public async Task<IActionResult> Index()
         {
-            var allMovies = await _context.Products.Include(n => n.Ship).OrderBy(n => n.ProductName).ToListAsync();
+            var allMovies = await _service.GetAllAsync();
             return View(allMovies);
         }
     }
