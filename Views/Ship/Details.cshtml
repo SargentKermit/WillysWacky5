@@ -1,0 +1,50 @@
+﻿@model Ship
+
+
+@{ ViewData["Title"] = "Details Of The Warehouse";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Details for @Model.ShipAddress</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                    <div class="form-group text-center">
+                        <img class="border-info rounded-circle"  style="max-width: 150px" id="MapPreview" />
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ShipMapLocationURL" class="control-label"></label>
+                        <input asp-for="ShipMapLocationURL" class="form-control" readonly />
+                        <span asp-validation-for="ShipMapLocationURL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ShipState" class="control-label"></label>
+                        <input asp-for="ShipState" class="form-control" readonly />
+                        <span asp-validation-for="ShipState" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ShipAddress" class="control-label"></label>
+                        <input asp-for="ShipAddress" class="form-control" readonly />
+                        <span asp-validation-for="ShipAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+
+    $(document).ready(function () {
+        var output = document.getElementById('MapPreview');
+        output.src = $("#ShipMapLocationURL").val();
+    })
+    </script>
+}

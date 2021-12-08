@@ -39,5 +39,13 @@ namespace WillysWacky5.Controllers
             await _service.AddAsync(ship);
             return RedirectToAction(nameof(Index));
         }
+
+        //Get: Ship/Details/1
+        public async Task<IActionResult> Details(int id)
+        {
+            var shipDetails = await _service.GetByIdAsync(id);
+            if (shipDetails == null) return View("NotFound");
+            return View(shipDetails);
+        }
     }
 }
