@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using WillysWacky5.Data.Base;
 
 namespace WillysWacky5.Models
 {
-    public class Distributor
+    public class Distributor:IEntityBase
     {
         [Key]
         public int Id { get; set; }
