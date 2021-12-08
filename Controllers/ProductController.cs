@@ -20,7 +20,7 @@ namespace WillysWacky5.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allMovies = await _service.GetAllAsync();
+            var allMovies = await _service.GetAllAsync(n => n.Ship);
             return View(allMovies);
         }
     }
