@@ -30,5 +30,15 @@ namespace WillysWacky5.Controllers
             var productDetail = await _service.GetProductByIdAsync(id);
             return View(productDetail);
         }
+        //GET: Products/Create
+
+        public IActionResult Create()
+        {
+            ViewData["Welcome"] = "Welcome to our store";
+            ViewBag.Description = "This is crap";
+
+            return View();
+        }
+
     }
 }
