@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -32,10 +33,12 @@ namespace WillysWacky5.Controllers
         }
         //GET: Products/Create
 
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            ViewData["Welcome"] = "Welcome to our store";
-            ViewBag.Description = "This is crap";
+            var productDropdownsData = await _service.GetNewProductDropdownsValues();
+
+            ViewBag.Ships = new SelectList(productDropdownsData.Ships, "Id", "ShipAddress");
+            ViewBag.Distributors = new SelectList(productDropdownsData.Distributors, "Id", "DistributorName");
 
             return View();
         }
