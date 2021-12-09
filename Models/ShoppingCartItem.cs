@@ -15,6 +15,6 @@ namespace WillysWacky5.Models
 
         public int Amount { get; set; }
 
-        public string ShoppingCart { get; set; }
+        public string ShoppingCartId { get; set; }
     }
 }
