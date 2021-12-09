@@ -29,5 +29,9 @@ namespace WillysWacky5.Data
         public DbSet<Distributor_Product> Distributor_Products { get; set; }
         public DbSet<Ship> Ships { get; set; }
 
+
+        //Order related tables
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
     }
 }
