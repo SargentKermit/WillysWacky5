@@ -16,7 +16,32 @@ namespace WillysWacky5.Data.Services
         {
             _context = context;
         }
+        public async Task AddNewProductAsync(NewProductVM data)
+        {
+            var newProduct = new Product()
+            {
+                ProductName = data.ProductName,
+                ProductDescription = data.ProductDescription,
+                ProductPrice = data.ProductPrice,
+                ProductImageURL = data.ProductImageURL,
+                ShipId = data.ShipId,
+                ProductCategory = data.ProductCategory
+            };
+            await _context.Products.AddAsync(newProduct);
+            await _context.SaveChangesAsync();
 
+            //Add Product Distributors
+            foreach (var distributorId in data.DistributorIds)
+            {
+                var newDistributorProduct = new Distributor_Product()
+                {
+                    ProductId = newProduct.Id,
+                    DistributorId = distributorId
+                };
+                await _context.Distributor_Products.AddAsync(newDistributorProduct);
+            }
+            await _context.SaveChangesAsync();
+        }
         public async Task<Product> GetProductByIdAsync(int id)
         {
             var productDetails = _context.Products
@@ -35,5 +60,7 @@ namespace WillysWacky5.Data.Services
             };
             return response;
         }
+
+        
     }
 }

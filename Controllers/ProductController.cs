@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WillysWacky5.Data;
 using WillysWacky5.Data.Services;
+using WillysWacky5.Models;
 
 namespace WillysWacky5.Controllers
 {
@@ -42,6 +43,19 @@ namespace WillysWacky5.Controllers
 
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Create(NewProductVM product)
+        {
+            if (!ModelState.IsValid)
+            {
+                var productDropdownsData = await _service.GetNewProductDropdownsValues();
+                ViewBag.Ships = new SelectList(productDropdownsData.Ships, "Id", "ShipAddress");
+                ViewBag.Distributors = new SelectList(productDropdownsData.Distributors, "Id", "DistributorName");
+                return View(product);
+            }
 
+            await _service.AddNewProductAsync(product);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
