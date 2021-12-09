@@ -57,5 +57,51 @@ namespace WillysWacky5.Controllers
             await _service.AddNewProductAsync(product);
             return RedirectToAction(nameof(Index));
         }
+
+
+
+
+       
+        //GET: Products/Edit/1
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            var productDetails = await _service.GetProductByIdAsync(id);
+            if (productDetails == null) return View("NotFound");
+
+            var response = new NewProductVM()
+            {
+                Id = productDetails.Id,
+                ProductName = productDetails.ProductName,
+                ProductDescription = productDetails.ProductDescription,
+                ProductPrice = productDetails.ProductPrice,
+                ProductImageURL = productDetails.ProductImageURL,
+                ShipId = productDetails.ShipId,
+                ProductCategory = productDetails.ProductCategory,
+                DistributorIds = productDetails.Distributor_Products.Select(n => n.DistributorId).ToList(),
+            };
+
+
+            var productDropdownsData = await _service.GetNewProductDropdownsValues();
+            ViewBag.Ships = new SelectList(productDropdownsData.Ships, "Id", "ShipAddress");
+            ViewBag.Distributors = new SelectList(productDropdownsData.Distributors, "Id", "DistributorName");
+            return View(response);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(int id, NewProductVM product)
+        {
+            if (id != product.Id) return View("NotFound");
+
+            if (!ModelState.IsValid)
+            {
+                var productDropdownsData = await _service.GetNewProductDropdownsValues();
+                ViewBag.Ships = new SelectList(productDropdownsData.Ships, "Id", "ShipAddress");
+                ViewBag.Distributors = new SelectList(productDropdownsData.Distributors, "Id", "DistributorName");
+                return View(product);
+            }
+
+            await _service.UpdateProductAsync(product);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

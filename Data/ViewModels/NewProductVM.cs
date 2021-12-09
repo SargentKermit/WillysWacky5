@@ -11,6 +11,8 @@ namespace WillysWacky5.Models
 {
     public class NewProductVM
     {
+        public int Id { get; set; }
+
         [Display(Name = "Product Name")]
         [Required(ErrorMessage = "Product Name Required")]
         public string ProductName { get; set; }

@@ -13,5 +13,6 @@ namespace WillysWacky5.Data.Services
         Task<Product> GetProductByIdAsync(int id);
         Task<NewProductDropdownsVM> GetNewProductDropdownsValues();
         Task AddNewProductAsync(NewProductVM data);
+        Task UpdateProductAsync(NewProductVM data);
     }
 }
