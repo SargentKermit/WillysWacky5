@@ -26,6 +26,21 @@ namespace WillysWacky5.Controllers
             return View(allProducts);
         }
 
+        public async Task<IActionResult> Filter(string searchString)
+        {
+            var allProducts = await _service.GetAllAsync(n => n.Ship);
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = allProducts.Where(n => n.ProductName.Contains(searchString) || n.ProductDescription.Contains(searchString)).ToList();
+                return View("Index", filteredResult);
+            }
+
+            return View("Index", allProducts);
+        }
+
+
+
         //GET: Products/Details/1
         public async Task<IActionResult> Details(int id)
         {
