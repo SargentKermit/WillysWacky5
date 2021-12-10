@@ -18,7 +18,7 @@ namespace WillysWacky5.Controllers
             _productService = productService;
             _shoppingCart = shoppingCart;
         }
-        public IActionResult Index()
+        public IActionResult ShoppingCart()
         {
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
@@ -28,7 +28,7 @@ namespace WillysWacky5.Controllers
                 ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
             };
 
-            return View();
+            return View(response);
         }
     }
 }
