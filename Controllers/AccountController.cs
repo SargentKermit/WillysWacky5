@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WillysWacky5.Data;
+using WillysWacky5.Data.ViewModels;
 using WillysWacky5.Models;
 
 namespace WillysWacky5.Controllers
@@ -22,9 +23,31 @@ namespace WillysWacky5.Controllers
             _context = context;
         }
 
-        public IActionResult Index()
+        public IActionResult Login() => View(new LoginVM());
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginVM loginVM)
         {
-            return View();
+            if (!ModelState.IsValid) return View(loginVM);
+
+            var user = await _userManager.FindByEmailAsync(loginVM.EmailAddress);
+            if (user != null)
+            {
+                var passwordCheck = await _userManager.CheckPasswordAsync(user, loginVM.Password);
+                if (passwordCheck)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index", "Product");
+                    }
+                }
+                TempData["Error"] = "Wrong credentials. Please, try again!";
+                return View(loginVM);
+            }
+
+            TempData["Error"] = "Wrong credentials. Please, try again!";
+            return View(loginVM);
         }
     }
 }
