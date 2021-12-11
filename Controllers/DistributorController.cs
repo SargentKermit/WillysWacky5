@@ -6,11 +6,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using WillysWacky5.Data;
 using WillysWacky5.Data.Services;
+using WillysWacky5.Data.Static;
 using WillysWacky5.Models;
 
 namespace WillysWacky5.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = UserRoles.Admin)]
     public class DistributorController : Controller
     {
         

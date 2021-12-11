@@ -7,6 +7,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using WillysWacky5.Data.Cart;
 using WillysWacky5.Data.Services;
+using WillysWacky5.Data.Static;
 using WillysWacky5.Data.ViewModels;
 
 namespace WillysWacky5.Controllers
