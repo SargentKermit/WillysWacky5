@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using WillysWacky5.Models;
 
 namespace WillysWacky5.Controllers
 {
+    [Authorize]
     public class ShipController : Controller
     {
         private readonly IShipService _service;
@@ -18,7 +20,7 @@ namespace WillysWacky5.Controllers
         {
             _service = service;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allShips = await _service.GetAllAsync();
@@ -41,6 +43,7 @@ namespace WillysWacky5.Controllers
         }
 
         //Get: Ship/Details/1
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var shipDetails = await _service.GetByIdAsync(id);

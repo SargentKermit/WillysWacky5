@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,18 @@ using WillysWacky5.Models;
 
 namespace WillysWacky5.Controllers
 {
+    [Authorize]
     public class DistributorController : Controller
     {
+        
         private readonly IDistributorService _service;
 
+        
         public DistributorController(IDistributorService service)
         {
             _service = service;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var data = await _service.GetAllAsync();
@@ -41,6 +45,7 @@ namespace WillysWacky5.Controllers
         }
 
         //GET: Distributors/Details/1
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var distributorDetails = await _service.GetByIdAsync(id);

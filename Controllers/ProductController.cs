@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -11,6 +12,7 @@ using WillysWacky5.Models;
 
 namespace WillysWacky5.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService _service;
@@ -19,13 +21,13 @@ namespace WillysWacky5.Controllers
         {
             _service = service;
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allProducts = await _service.GetAllAsync(n => n.Ship);
             return View(allProducts);
         }
-
+        [AllowAnonymous]
         public async Task<IActionResult> Filter(string searchString)
         {
             var allProducts = await _service.GetAllAsync(n => n.Ship);
@@ -42,6 +44,7 @@ namespace WillysWacky5.Controllers
 
 
         //GET: Products/Details/1
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var productDetail = await _service.GetProductByIdAsync(id);
