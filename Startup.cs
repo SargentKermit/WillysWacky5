@@ -35,6 +35,7 @@ namespace WillysWacky5
             services.AddScoped<IDistributorService, DistributorService>();
             services.AddScoped<IShipService, ShipService>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IOrdersService, OrdersService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
             services.AddSession();
