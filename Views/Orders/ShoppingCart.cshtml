@@ -5,13 +5,13 @@
     ViewData["Title"] = "Shopping Cart Summary";
 }
 <div class="row">
-    <div class="col-md-8 offset-2">
+    <div class="col-md-8 offset-2 nav-color">
         <div class="text-center">
-            <h2>Your Shopping Cart Summary</h2>
+            <h2 class="simple_text">Your Shopping Cart Summary</h2>
         </div>
         <table class="table">
             <thead>
-                <tr>
+                <tr class="simple_text">
                     <th>Selected</th>
                     <th>Product</th>
                     <th>Price</th>
@@ -19,7 +19,7 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="simple_text">
                 @foreach (var item in Model.ShoppingCart.ShoppingCartItems)
                 {
                     <tr>
@@ -58,7 +58,7 @@
 
                 </div>
                 <span style="padding:5px"></span>
-                <a class="btn btn-outline-success" asp-controller="Product" asp-action="Index">
+                <a class="btn btn-success greenish" asp-controller="Product" asp-action="Index">
                     Add more items
                 </a>
             </div>

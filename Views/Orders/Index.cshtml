@@ -9,23 +9,23 @@
             <h4>List of all your orders</h4>
         </p>
 
-        <table class="table">
+        <table class="table nav-color">
             <thead>
                 <tr>
-                    <th>Order ID</th>
-                    <th>Items</th>
-                    <th>Total</th>
+                    <th class="simple_text">Order ID</th>
+                    <th class="simple_text">Items</th>
+                    <th class="simple_text">Total</th>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
-                        <th>User</th>
+                        <th class="simple_text">User</th>
                     }
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="simple_text">
                 @foreach (var order in Model)
             {
                 <tr>
-                    <td class="align-middle">@order.Id</td>
+                    <td class="align-middle ">@order.Id</td>
                     <td class="align-middle">
                         <ul style="list-style-type:none">
                             @foreach (var item in order.OrderItems)

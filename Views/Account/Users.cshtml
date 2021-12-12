@@ -10,15 +10,15 @@
             <h4>List of all users</h4>
         </p>
 
-        <table class="table">
+        <table class="table nav-color">
             <thead>
-                <tr class="text-center">
+                <tr class="text-center simple_text">
                     <th>@Html.DisplayNameFor(model => model.FullName)</th>
                     <th>@Html.DisplayNameFor(model => model.UserName)</th>
                     <th>@Html.DisplayNameFor(model => model.Email)</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="simple_text">
                 @foreach (var item in Model)
                 {
                     <tr>
