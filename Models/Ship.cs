@@ -11,7 +11,7 @@ namespace WillysWacky5.Models
     {
         [Key]
         public int Id { get; set; }
-        [Display(Name = "Shipping From")]
+        [Display(Name = "Shipping From Map URL")]
         [Required(ErrorMessage = "Warehouse Map Location Required")]
         public string ShipMapLocationURL { get; set; }
         [Display(Name = "Shipping State")]

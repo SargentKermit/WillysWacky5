@@ -5,9 +5,9 @@
 
 <div class="row">
     <div class="col-md-8 offset-md-2">
-        <table class="table">
+        <table class="table nav-color">
             <thead>
-                <tr class="text-center">
+                <tr class="text-center nav-color simple_text">
                     <th>@Html.DisplayNameFor(model => model.ShipMapLocationURL)</th>
                     <th>@Html.DisplayNameFor(model => model.ShipState)</th>
                     <th>@Html.DisplayNameFor(model => model.ShipAddress)</th>
@@ -24,18 +24,18 @@
                     <td class="align-middle">
                         <img class="rounded-circle" src="@item.ShipMapLocationURL" alt="@item.ShipAddress" style="max-width: 150px" />
                     </td>
-                    <td class="align-middle">
+                    <td class="align-middle simple_text">
                         @Html.DisplayFor(modelItem => item.ShipState)
                     </td>
-                    <td class="align-middle">
+                    <td class="align-middle simple_text">
                         @Html.DisplayFor(modelItem => item.ShipAddress)
                     </td>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                     {
                         <td class="align-middle">
-                            <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit </a> |
-                            <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details </a> |
-                            <a class="btn btn-danger text-black" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete </a>
+                            <a class="btn btn-primary editdis" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit </a> |
+                            <a class="btn btn-info blueish2" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details </a> |
+                            <a class="btn btn-danger text-black reddish" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete </a>
 
                         </td>
                     }

@@ -10,7 +10,7 @@
             <h1>Edit A Warehouse</h1>
         </p>
         <div class="row">
-            <div class="col-md-8 offset-2">
+            <div class="col-md-8 offset-2 nav-color">
                 <form asp-action="Edit">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -18,24 +18,24 @@
                     <div class="form-group text-center">
                         <img class="border-info rounded-circle"  style="max-width: 150px" id="ShipLogoPreview" />
                     </div>
-                    <div class="form-group">
+                    <div class="form-group simple_text">
                         <label asp-for="ShipMapLocationURL" class="control-label"></label>
                         <input asp-for="ShipMapLocationURL" class="form-control" />
                         <span asp-validation-for="ShipMapLocationURL" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group simple_text">
                         <label asp-for="ShipState" class="control-label"></label>
                         <input asp-for="ShipState" class="form-control" />
                         <span asp-validation-for="ShipState" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group simple_text">
                         <label asp-for="ShipAddress" class="control-label"></label>
                         <input asp-for="ShipAddress" class="form-control" />
                         <span asp-validation-for="ShipAddress" class="text-danger"></span>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />
-                        <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                    <div class="form-group simple_text">
+                        <input type="submit" value="Update" class="btn btn-success float-right greenish" />
+                        <a class="btn btn-secondary blueish2" asp-action="Index">Show All</a>
                     </div>
                 </form>
             </div>

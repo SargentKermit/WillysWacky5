@@ -17,7 +17,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3 nav-color">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Willy's Wacky Products</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img src="http://reinemannc-ltc.com/2021-ltc-classes/WillysWackyImages/logowilly.png" style="padding-right:15px;" alt="Willy's Logo'">  Willy's Wacky Products</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
                         </ul>
                         
                     <form class="form-inline my-2 my-lg-0" asp-controller="Product" asp-action="Filter" style="padding-right: 25px;">
-                        <input name="searchString" type="text" class="form-control" placeholder="Search for a product..." />
+                        <input name="searchString" type="text" class="form-control testingMan" placeholder="Search for a product..." />
                         <button class="btn btin-outline-success my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
 
 
@@ -66,9 +66,11 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Willy's Wacky Products
+    <footer class="border-top footer text-muted .testingMan">
+        <div class="container .testingMan">
+            Phone: (430)-342-3422 |
+             Email: willyiswacky@gmail.com |
+             &copy; 2021 - Willy's Wacky Products
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
