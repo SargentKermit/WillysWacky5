@@ -7,19 +7,23 @@
 
 
     <div class="col-md-8 offset-2">
-        <div class="card mb-3" style="max-width: 540px;">
+        <div class="card mb-12">
             <div class="row g-0">
                 <div class="col-md-12">
                     <div class="card-header text-white bg-info">
                         <p class="card-text">
                             <h5 class="card-title">
                                 @Model.ProductName
-                            </h5>
+                                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                {
+                                 <a class="text-white float-right" asp-action="Delete" asp-route-id="@Model.Id"><i class="bi bi-trash"></i></a>
+                                }
+                                </h5>
                         </p>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <img src="@Model.ProductImageURL" width="100" alt="@Model.ProductName" />
+                    <img src="@Model.ProductImageURL" style="max-width: 100%; position: relative; top: 20px; left: 10px;" alt="@Model.ProductName" />
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
@@ -52,7 +56,7 @@
                     <div class="card-footer">
                         <p class="card-text">
                             <a class="btn btn-outline-primary float-right" asp-action="Index">Back To List</a>
-                            <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i>Add to Cart ($@Model.ProductPrice)</a>
+                            <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i>Add to Cart @Model.ProductPrice.ToString("c")</a>
                         </p>
 
                     </div>

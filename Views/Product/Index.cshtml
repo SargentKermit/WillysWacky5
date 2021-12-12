@@ -9,7 +9,7 @@
     {
         <div class="col-md-4 col-xs-6 border-primary mb-3">
             <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
+                <div class="row g-0" style="min-height:500px;">
                     <div class="col-md-12">
                         <div class="card-header text-white bg-info">
                             <p class="card-text">
@@ -24,7 +24,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="@item.ProductImageURL" width="100" alt="@item.ProductName" />
+                        <img src="@item.ProductImageURL" style="max-width: 100%; position: relative; top: 20px; left: 10px;" alt="@item.ProductName" />
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
@@ -38,7 +38,7 @@
                         <div class="card-footer">
                             <p class="card-text">
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i> Show Details</a>
-                                <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i>Add to Cart ($@item.ProductPrice</a>
+                                <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddItemToShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i>Add to Cart @item.ProductPrice.ToString("c")</a>
                             </p>
 
                         </div>

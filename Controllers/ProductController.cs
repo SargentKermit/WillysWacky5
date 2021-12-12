@@ -35,7 +35,7 @@ namespace WillysWacky5.Controllers
 
             if (!string.IsNullOrEmpty(searchString))
             {
-                var filteredResult = allProducts.Where(n => n.ProductName.Contains(searchString) || n.ProductDescription.Contains(searchString)).ToList();
+                var filteredResult = allProducts.Where(n => n.ProductName.ToLower().Contains(searchString.ToLower()) || n.ProductDescription.ToLower().Contains(searchString.ToLower()) || n.ProductCategory.ToString().ToLower().Contains(searchString.ToLower()) || n.Ship.ShipAddress.ToString().ToLower().Contains(searchString.ToLower())).ToList();
                 return View("Index", filteredResult);
             }
 
@@ -120,6 +120,34 @@ namespace WillysWacky5.Controllers
             }
 
             await _service.UpdateProductAsync(product);
+            return RedirectToAction(nameof(Index));
+        }
+        public async Task<IActionResult> Delete(int id)
+        {
+            var productDetails = await _service.GetProductByIdAsync(id);
+            if (productDetails == null) return View("NotFound");
+
+            var response = new NewProductVM()
+            {
+                Id = productDetails.Id,
+                ProductName = productDetails.ProductName,
+                ProductDescription = productDetails.ProductDescription,
+                ProductPrice = productDetails.ProductPrice,
+                ProductImageURL = productDetails.ProductImageURL,
+                ShipId = productDetails.ShipId,
+                ProductCategory = productDetails.ProductCategory,
+                DistributorIds = productDetails.Distributor_Products.Select(n => n.DistributorId).ToList(),
+
+            };
+            var productDropdownsData = await _service.GetNewProductDropdownsValues();
+            ViewBag.Ships = new SelectList(productDropdownsData.Ships, "Id", "ShipAddress");
+            ViewBag.Distributors = new SelectList(productDropdownsData.Distributors, "Id", "DistributorName");
+            return View(response);
+        }
+        [HttpPost, ActionName("Delete")]
+        public async Task<IActionResult> DeleeteConfirmed(int id)
+        {
+            await _service.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
         }
     }
