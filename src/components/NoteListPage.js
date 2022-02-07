@@ -14,6 +14,7 @@ export default function NoteListPage(props) {
             </div>
         </div>
     );
+     
 }
 
 NoteListPage.propTypes = {
