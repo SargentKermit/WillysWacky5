@@ -9,7 +9,7 @@ export default function NoteListPage(props) {
             <h1>Note List</h1>
             <div className="noteList">
                 <div className="noteListItem">
-                <NoteListItem id = "123" text="Taking notes is  very important" dateTimeText='1/25/2020 5:00pm' onclick={handleListItemClick} />
+                <NoteListItem id = "123" text="Taking notes is very important" dateTimeText='1/25/2020 5:00pm' onclick={handleListItemClick} />
                 </div>
             </div>
         </div>
